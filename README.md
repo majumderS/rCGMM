@@ -20,19 +20,19 @@ pip install vermouth<br/>
 
 Place the Forcefield parameter files
 --------------------------------------
-Download the forcefield files (na.ff,modifications.ff) from your choice of sncRNA Folder in this repository i.e. siRNA, miRNA, piRNA <br/>
+Download the forcefield files (na.ff,modifications.ff) from your choice of sncRNA from Forcefield_params/ in this repository i.e. siRNA, miRNA, piRNA <br/>
 Go the directory <dir> where vermouth is installed.<br/>
 go the <dir>/vermouth/data/force_fields/martini3001/<br/>
 copy na.ff and modifications.ff to the above path.<br/>
 
 Place the mapping files 
 ---------------------------------
-Download the bead mapping files (a.charmm36.map,u.charmm36.map,g.charmm36.map,c.charmm36.map) from your choice of sncRNA Folder in this repository i.e. siRNA/, miRNA/, piRNA/<br/>
+Download the bead mapping files (a.charmm36.map,u.charmm36.map,g.charmm36.map,c.charmm36.map) from your choice of sncRNA from Forcefield_params/ in this repository i.e. siRNA/, miRNA/, piRNA/<br/>
 Go the directory <dir> where vermouth is installed.<br/>
 go the <dir>/vermouth/data/mappings/martini3001/ <br/>
 copy a.charmm36.map,u.charmm36.map,g.charmm36.map,c.charmm36.map here<br/>
 
-Download the required .itp files (martini_v3.0.0_solvents_v1.itp,martini_v3.0.0_ions_v1.itp,water.gro) from itp_files/ folder in this repository<br/>
+Download the required .itp files (martini_v3.0.0_solvents_v1.itp,martini_v3.0.0_ions_v1.itp,water.gro) from ITP/ folder in this repository<br/>
 Download the required .mdp files from MDP/ in this repository<br/>
 
 USAGE
