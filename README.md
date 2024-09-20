@@ -101,7 +101,7 @@ Example: <br/>
 
 Molecular Dynamics Routine
 ----------------------
-# For dsRNA .............................
+# For dsRNA
 gmx editconf -f file.pdb  -d 1.0 -bt cubic -o box.gro<br/>
 gmx solvate -cp box.gro -cs water.gro -o file_solv.gro -p topol.top   <br/>  
 gmx grompp -f ions.mdp -c file_solv.gro -p topol.top -o ions.tpr -maxwarn 1  <br/> 
@@ -119,7 +119,7 @@ gmx mdrun -v -deffnm md_0_1 <br/>
 
 
 
-# For ssRNA...................
+# For ssRNA
 gmx editconf -f file.pdb  -d 1.0 -bt cubic -o box.gro
 gmx solvate -cp box.gro -cs water.gro -o file_solv.gro -p topol.top     
 gmx grompp -f ions.mdp -c file_solv.gro -p topol.top -o ions.tpr -maxwarn 1   
