@@ -136,6 +136,15 @@ gmx grompp -f mdrun_wo_spine.mdp -c eq.gro -p topol.top -o md_0_1  -n index.ndx 
 gmx mdrun -v -deffnm md_0_1 <br/>
 
 
+Analysis
+--------------
+gmx trjconv -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc nojump -center  <br/>
+
+gmx trjconv -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -center <br/>
+
+gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd_CG.xvg -tu ns <br/>
+
+
 
 
 
