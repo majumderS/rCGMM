@@ -18,20 +18,22 @@ Install Gromacs (https://manual.gromacs.org/documentation/current/install-guide/
 
 pip install vermouth
 
->>>>>>>>>> Place the Forcefield parameter files
+Place the Forcefield parameter files
+--------------------------------------
 Download the forcefield files (na.ff,modifications.ff) from your choice of sncRNA Folder in this repository i.e. siRNA, miRNA, piRNA 
 Go the directory <dir> where vermouth is installed.
 go the <dir>/vermouth/data/force_fields/martini3001/
 copy na.ff and modifications.ff to the above path.
 
->>>>>>>>>> Place the mapping files 
+Place the mapping files 
+---------------------------------
 Download the bead mapping files (a.charmm36.map,u.charmm36.map,g.charmm36.map,c.charmm36.map) from your choice of sncRNA Folder in this repository i.e. siRNA/, miRNA/, piRNA/ 
 Go the directory <dir> where vermouth is installed.
 go the <dir>/vermouth/data/mappings/martini3001/ 
 copy a.charmm36.map,u.charmm36.map,g.charmm36.map,c.charmm36.map here
 
->>>>>>>>>> Download the required .itp files (martini_v3.0.0_solvents_v1.itp,martini_v3.0.0_ions_v1.itp,water.gro) from itp_files/ folder in this repository
->>>>>>>>>> Download the required .mdp files from MDP/ in this repository
+Download the required .itp files (martini_v3.0.0_solvents_v1.itp,martini_v3.0.0_ions_v1.itp,water.gro) from itp_files/ folder in this repository
+Download the required .mdp files from MDP/ in this repository
 
 USAGE
 -------------------------
