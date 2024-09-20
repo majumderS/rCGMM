@@ -1,0 +1,394 @@
+; Copyright 2018 University of Groningen
+;
+; Licensed under the Apache License, Version 2.0 (the "License");
+; you may not use this file except in compliance with the License.
+; You may obtain a copy of the License at
+;
+;    http://www.apache.org/licenses/LICENSE-2.0
+;
+; Unless required by applicable law or agreed to in writing, software
+; distributed under the License is distributed on an "AS IS" BASIS,
+; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+; See the License for the specific language governing permissions and
+; limitations under the License.
+
+[ macros ]
+na_resnames "A|U|G|C"
+stiff_fc 150000
+
+
+[ variables ]        
+elastic_network_bond_type 6
+res_min_dist 3
+
+[ citations ]
+Martini3
+
+
+;;; Used groups (in blocks) - Residue bonds, Residue angles, backbone-sidechain dihedrals 
+;;; Used groups (in links)  - Backbone bonds, BBB angles, BB-SC1 angles, BB-BB-BB-BB 
+
+;;; ADENINE
+
+[ moleculetype ]
+; molname       nrexcl
+A                1			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1   SQ1     1     A    BB1     1      -1  
+ 2   SN3a    1     A    BB2     2       0
+ 3   SC1     1     A    BB3     3       0
+ 4   TN3a    1     A    ASC1     4      0
+ 5   TN1a    1     A    ASC2     5      0 
+ 6   TN3d    1     A    ASC3     6      0
+ 7   TN1a    1     A    ASC4     7      0
+
+ 
+
+ [bonds]
+#meta {"group": "Residue bonds"}
+;  i     j   funct     length.    force.c.
+   BB1   BB2	1	      0.413	    20283 
+   BB2   BB3	1	      0.238	    55035 
+   BB3   ASC1	1	      0.342	    23168
+   ASC2   ASC4	1	      0.328	    80000;117572;60000;
+   ASC1   ASC3   1      0.341     65000;111098;40000  ;;newly included to maintain the planarity of the molecule.
+#meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
+;  i     j   funct   length 
+   ASC1   ASC2	1	    0.234   $stiff_fc	
+   ASC2   ASC3	1	    0.269	$stiff_fc
+   ASC3   ASC4	1	    0.295	$stiff_fc
+   ASC4   ASC1	1	    0.164   $stiff_fc
+
+
+[constraints]
+#meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
+;  i     j   funct   length 
+   ASC1   ASC2	1	    0.234	
+   ASC2   ASC3	1	    0.269	
+   ASC3   ASC4	1	    0.295	
+   ASC4   ASC1	1	    0.164	
+
+[angles]
+#meta {"group": "Residue angles"}
+;  i     j    k     funct   angle  force.c.
+   BB1   BB2   BB3	2	      102	5000 ;175
+   BB2   BB3   ASC1	2	      33	   6000     ;105
+   ;BB3   BB2   ASC1   2      47.5  1575   ;105   ;;newly included; comma removed 2nd gen
+   BB3   ASC1   ASC2	2	      115	5000   ;90
+   BB3   ASC1   ASC4	2	      124	6000   ;185 ;;not
+   ASC1   ASC2   ASC3	1	      85	 4000   ;200
+   ASC2   ASC1   ASC4	1	      112 4000   ;200
+   ASC2   ASC3   ASC4	1	      71	 4000   ;200
+   ASC3   ASC4   ASC1	1	      91	 4000   ;200
+
+[dihedrals] 
+#meta {"group":"backbone-sidechain dihedrals"}
+;  i     j    k    l   funct   angle  force.c.  m
+   BB1   BB2  BB3  ASC1	2	      -138	    14         ;1.5   
+   BB2   BB3  ASC1  ASC2	1	     -157	    12    2      ;4
+   BB2   BB3  ASC1  ASC2	2	      180	 20         ;2
+   BB2   BB3  ASC1  ASC4	1	      -10	 10      2   ;5
+   BB2   BB3  ASC1  ASC4	2	       80	 50         ;0.5 
+   ASC1   ASC2  ASC3  ASC4	2	       0    100         ;10
+
+[exclusions]
+; We do not want non-bounded interactions within the residue.
+BB1 BB2 BB3 ASC1 ASC2 ASC3 ASC4
+BB2 BB3 ASC1 ASC2 ASC3 ASC4
+BB3 ASC1 ASC2 ASC3 ASC4
+ASC1 ASC2 ASC3 ASC4
+ASC2 ASC3 ASC4
+ASC3 ASC4
+
+
+
+;;; URACIL
+
+[ moleculetype ]
+; molname       nrexcl
+U                1			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1   SQ1     1      U     BB1     1      -1   
+ 2   SN3a    1      U     BB2     2       0
+ 3   SC1     1      U     BB3     3       0
+ 4   TN3a    1      U     USC1     4      0
+ 5   TP2a    1      U     USC2     5      0  
+ 6   TP1a    1      U     USC3     6      0
+
+
+
+ [bonds]
+ #meta {"group": "Residue bonds"}
+;  i     j   funct   length         force.c.
+   BB1   BB2	1	   0.413	         20283;20000 
+   BB2   BB3	1	   0.24	         55035;40000 
+   BB3   USC1	1	   0.33	         36721;18000
+
+#meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
+;  i     j   funct   length 
+   USC1   USC2	1	   0.221	   $stiff_fc
+   USC2   USC3	1	   0.223	   $stiff_fc
+   USC3   USC1	1	   0.3	   $stiff_fc
+
+
+[constraints]
+#meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
+;  i     j   funct   length 
+    USC1   USC2	1	   0.221	
+    USC2   USC3	1	   0.223	
+    USC3   USC1	1	   0.3	
+
+[angles]
+#meta {"group": "Residue angles"}
+;  i     j    k     funct   angle  force.c.
+   BB1   BB2   BB3	2	      102	5000    ;175
+   BB2   BB3   USC1	2	      28   2000       ;105
+   ;BB3   BB2   USC1   2        50    3375 ;;newly included ;comma removed 2nd gen
+   BB3   USC1   USC2	2	      99	   6000     ;200
+   ;BB2   USC1   USC3	1	      155	1500 ;;not sure about this ;comma removed 2nd gen
+   USC1   USC2   USC3	1	      50	 3000 ;100
+   USC2   USC1   USC3	1	      77	 3000 ;100
+   BB3   USC1   USC3   1        154  1500 ;100  ;;newly included
+   USC2   USC3   USC1	1	      53	 3000 ; 100
+
+[dihedrals]
+#meta {"group":"backbone-sidechain dihedrals"}
+;  i     j    k    l   funct   angle  force.c.  m
+   BB1   BB2  BB3  USC1	   1	      -138	 20    2     ;2
+   BB2   BB3  USC1  USC2	2	      -144	 10          ;4
+   BB2   BB3  USC1  USC3	1	     134	 10      6    ;2
+
+
+[exclusions]
+; We do not want non-bounded interactions within the residue.
+BB1 BB2 BB3 USC1 USC2 USC3
+BB2 BB3 USC1 USC2
+BB3 USC1 USC2
+USC1 USC2
+
+;;; GUANINE
+
+[ moleculetype ]
+; molname       nrexcl
+G                1   			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1   SQ1     1     G     BB1      1       -1         
+ 2   SN3a    1     G     BB2      2       0
+ 3   SC1     1     G     BB3      3       0
+ 4   TN3a    1     G     GSC1      4      0
+ 5   TN3d    1     G     GSC2      5      0 
+ 6   TP2a    1     G     GSC3      6      0 
+ 7   TN1a    1     G     GSC4      7      0
+
+
+ [bonds]
+#meta {"group": "Residue bonds"}
+;  i     j   funct   length  force.c.
+   BB1   BB2	1	   0.41	   20283      ;20000
+   BB2   BB3	1	   0.24	   55035      ;40000
+   BB3   GSC1	1	   0.37	   30000;10000      ;20000
+   GSC2   GSC4	1	   0.35	   40000      ;40000  
+   GSC1   GSC3   1     0.31   40000      ;40000  ;;newly included
+#meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
+;  i     j   funct   length 
+   GSC1   GSC2	1	   0.293	   $stiff_fc
+   GSC2   GSC3	1	   0.291	   $stiff_fc
+   GSC3   GSC4	1	   0.203	   $stiff_fc
+   GSC4   GSC1	1	   0.28	   $stiff_fc
+
+
+[constraints]
+#meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
+;  i     j   funct   length 
+   GSC1   GSC2	1	   0.293	
+   GSC2   GSC3	1	   0.291	
+   GSC3   GSC4	1	   0.203	
+   GSC4   GSC1	1	   0.28	
+
+[angles]
+#meta {"group": "Residue angles"}
+;  i     j    k     funct   angle  force.c.
+   BB1   BB2   BB3	2	      102	5000     ;175
+   BB2   BB3   GSC1	2	      33	   4000     ;260
+   BB3   GSC1   GSC2	2	      111	5000     ;80
+   BB3   GSC1   GSC4	2	      124	6000     ;120
+   GSC1   GSC2   GSC3	1	      71	4000    ;  200
+   GSC2   GSC1   GSC4	1	      113 4000   ;	200
+   ****GSC2   GSC3   GSC4	1	      113 4000    ; 200
+   GSC3   GSC4   GSC1	1	      91  4000  ;	200
+
+[dihedrals]
+#meta {"group":"backbone-sidechain dihedrals"}
+;  i     j    k    l   funct   angle  force.c.  m 
+   BB1   BB2  BB3  GSC1	1	      -140.0 	12  2     ;1      comma removed 2nd gen
+   BB2   BB3  GSC1  GSC2	2	    -160	 10        ;3.5
+   BB2   BB3  GSC1  GSC4	1	       0	  14     2   ;5
+   GSC1   GSC2  GSC3  GSC4	2	       0	     100        ;10
+
+
+[exclusions]
+; We do not want non-bounded interactions within the residue.
+BB1 BB2 BB3 GSC1 GSC2 GSC3 GSC4
+BB2 BB3 GSC1 GSC2 GSC3 GSC4
+BB3 GSC1 GSC2 GSC3 GSC4
+GSC1 GSC2 GSC3 GSC4
+GSC2 GSC3 GSC4
+GSC3 GSC4
+
+
+;;; CYTOSINE
+
+[ moleculetype ]
+; molname       nrexcl
+C                1			
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1   SQ1     1     C    BB1     1        -1  
+ 2   SN3a    1     C    BB2     2         0
+ 3   SC1     1     C    BB3     3         0
+ 5   TN3a    1     C    CSC1     4        0
+ 6   TP2a    1     C    CSC2     5        0 
+ 7   TN3d    1     C    CSC3     6        0  
+ 
+
+ [bonds]
+ #meta {"group": "Residue bonds"}
+;  i     j   funct   length         force.c.
+   BB1   BB2	1	   0.413	        20283 ;20000 
+   BB2   BB3	1	   0.24	        55035 ; 40000 
+   BB3   CSC1	1	   0.26	        11000 ; 11000
+
+;#meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
+;  i     j   funct   length  
+   CSC1   CSC2	1	   0.27   $stiff_fc
+   CSC2   CSC3	1	   0.273	   $stiff_fc
+   CSC3   CSC1	1	   0.314    $stiff_fc
+
+
+[constraints]
+#meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
+;  i     j   funct   length 
+   CSC1   CSC2	1	   0.27	
+   CSC2   CSC3	1	   0.273	
+   CSC3   CSC1	1	   0.314	
+[angles]
+#meta {"group": "Residue angles"}
+;  i     j    k     funct   angle  force.c.
+
+   BB1   BB2  BB3	   2	      102	  5000 ;175
+   BB2   BB3  CSC1	   2	      28  2300  ;230
+   BB3   CSC1  CSC2	   2	      99  3000  ;170
+   BB3   CSC1  CSC3    2        149   3000 ;100   ;;newly included
+  ; BB2   CSC1  CSC3	   1	      155	1500  ;;not sure ;comma removed 2nd gen
+   CSC1   CSC2  CSC3	   1	      63	   3000 ;200
+   CSC2   CSC1  CSC3	   1	      71	   3000 ;200
+   CSC2   CSC3  CSC1	   1	      49	   3000 ;200
+
+[dihedrals]
+#meta {"group":"backbone-sidechain dihedrals"}
+;  i     j    k    l   funct   angle  force.c.  m
+   BB1   BB2  BB3  CSC1	1	      55.0	30     2
+   BB1   BB2  BB3  CSC1	2	      -136	13      
+   BB2   BB3  CSC1  CSC2	1	      0 	10   6   
+   BB2   BB3  CSC1  CSC2	2	      180.0	30        
+   BB2   BB3  CSC1  CSC3  2        144  10  ;;newly included
+
+[exclusions]
+; We do not want non-bounded interactions within the residue.
+BB1 BB2 BB3 CSC1 CSC2 CSC3
+BB2 BB3 CSC1 CSC2 CSC3
+BB3 CSC1 CSC2 CSC3
+CSC1 CSC2 CSC3
+CSC2 CSC3
+
+
+
+;;;; Links
+
+;; Links for COIL. We apply them first as coil is the default.
+
+[ link ]
+resname $na_resnames
+[ bonds ]
+#meta {"group": "Backbone bonds"}
+BB3  +BB1 1 0.33 91726;15000;;10000    ;increased by 1.5 times
+
+
+
+[ link ]
+resname $na_resnames
+[ angles ]
+#meta {"group": "BBB angles"}
+BB2   BB3   +BB1	2 126 1000 ;105        ;increased by 10 and 1.5 times.
+
+
+[ link ]
+resname $na_resnames
+[ angles ]
+#meta {"group": "BBB angles"}
+BB3   +BB1   +BB2	2 69 1000  ;75        ;increased by 10 and 1.5 times
+
+
+
+[ link ]
+resname "A"
+[ angles ]
+#meta {"group": "BB-SC1 angles"}
+ASC1   BB3   +BB1	2 119 140;  1400 15               ; incresed by 10 and 1.5 times
+                                           ; additional increase by 10 times (as very small w.r.t others)
+
+
+[ link ]
+resname "U"
+[ angles ]
+#meta {"group": "BB-SC1 angles"}
+USC1   BB3   +BB1	1 115 510;  5100  ;5                ; incresed by 10 and 1.5 times
+                                           ; additional increase by 10 times (as very small w.r.t others)
+
+
+[ link ]
+resname "G"
+[ angles ]
+#meta {"group": "BB-SC1 angles"} 
+GSC1   BB3   +BB1	2 124 630;  6300; 20             ; incresed by 10 and 1.5 times
+                                          ; additional increase by 10 times (as very small w.r.t others)
+
+[ link ]
+resname "C"
+[ angles ]
+#meta {"group": "BB-SC1 angles"} 
+CSC1   BB3   +BB1	2 119 170;  1700 ;0.5             ; incresed by 10 and 1.5 times
+                                          ; additional increase by 100 times (as very small w.r.t others)
+
+
+[ link ]
+resname $na_resnames
+[ dihedrals ]
+#meta  {"group": "BB-BB-BB-BB"}
+ BB1   BB2  BB3  +BB1	2 0 20  ;3.5
+ 
+[ link ]
+resname $na_resnames
+[ dihedrals ]
+#meta  {"group": "BB-BB-BB-BB"}
+ BB2   BB3  +BB1  +BB2	1 0 10 4   ;4
+ 
+[ link ]
+resname $na_resnames
+[ dihedrals ]
+#meta  {"group": "BB-BB-BB-BB"}
+ BB3   +BB1  +BB2  +BB3	9 99.0  200  2   ;1.5
+ 
+commenting as data didnt show any such trend 
+[ link ]
+resname $na_resnames
+[ dihedrals ]
+#meta  {"group": "BB-BB-BB-BB"}
+BB3   +BB1  +BB2  +BB3	9 -10.0 200  2   ;1.5  
