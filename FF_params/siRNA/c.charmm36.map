@@ -1,0 +1,87 @@
+;  Mapping file for cytosine RNA
+;   - Adapted from Parisa-2014 CHARMM DNA mapping files to RNA; Helgi I. Ingolfsson <ingolfsson@gmail.com> 2015.11
+;   - Changes to fix chirality of H1' and H4' in sugar backbone; Helgi I. Ingolfsson <ingolfsson@gmail.com> 2015.11
+;   - Rules and atom definitions for the 3'/5'ends added, can be in the same file as those are skipped when not in the AA topology; Helgi I. Ingolfsson <ingolfsson@gmail.com> 2015.11
+;   - Nucleobase mapping and rules changed was leaning too much in the SC3 direction; Helgi I. Ingolfsson <ingolfsson@gmail.com> 2015.11
+
+[ molecule ]
+C
+[from]
+charmm
+
+[to]
+martini3001
+
+[ martini ]
+BB1 BB2 BB3  CSC1 SC2 SC3 
+
+[ mapping ]
+charmm27 charmm36
+
+[ atoms ]
+; phosphate (Note in the 5'end there is no phosphate and no BB1 bead, bakwards uses BB2 insted)
+   ;-1  H5T    BB2 ;RD                ; Only used in the 5'end; removing this now, because its added in modifications.
+    1    P    BB1 ;RD    ; used a R bead (4-1) mapping for the phophate ion. D asthe bead type depicting phosphate  [supp tab 24]
+    2  O1P    BB1 ;RD
+    3  O2P    BB1 ;RD
+    4  O3P    BB1
+    5  O5'    BB2 ;RD    ; it would be better to put 05' in BB2 always, as in 5'end there is no BB1 anyway (#TODO)
+; sugar
+    6  C5'    BB2 ;SN3r
+    7  H5'    BB2 ;SN3r
+    8  H5''   BB2 ;SN3r
+    9  C4'    BB2  ;SN3r SN3r
+   10  H4'    BB2 ;SN3r
+   11 O4'    BB2 ;SN3r
+   12  C1'    BB3 ;SP1
+   13  H1'    BB3 ;SP1
+; cytosine
+   14  N1     CSC1;TN3a
+   15  C6     CSC1;TN3a
+   16  H6     CSC1 ;TN3a
+   17  C5     CSC3
+   18  H5     CSC3
+   19  C2     CSC2;TN5a TN4 TN3a
+   20  O2     CSC2 ;TN5a
+   21  N3     CSC2 ;TN4
+   22  C4     CSC3 ;TN3a
+   23  N4     CSC3 ;TN3a
+   24  H41    CSC3 ;TN3a
+   25  H42    CSC3 ;TN3a
+; sugare-cont 
+   26  C2'    BB3 ;SP1 
+   27  H2''   BB3 ;SP1
+   28  O2'    BB3 ;SP1
+   29  H2'   BB3 ;SP1
+   30  C3'    BB3 ;SN3r
+   31  H3'    BB3 ;SN3r
+   32  O3'    BB3 ;SN3r  THIS is needed as during 3' end, there is no BB1
+ ;  32  H3T    BB3 ;SN3r  ;only used in the 3' end ; removing this now, because its added in modifications.
+
+
+
+[ out ]
+O3' C3' O4' C5' O5'
+H4' C4' C5' O5'
+H1' C1' C5' O5'
+[ trans ]
+O3' C3' C4' C5'
+H5' C5' C4' O4'
+H5'' C5' C4' C3'
+[ cis ]
+H3' C3' C4' C5'
+[ chiral ]
+H2' C2' C1' C3'               ; RNA, places the H thowards the base
+O2' C2' C3' C1'                ; RNA, places the O away from the base
+H2'' C2' C3' C1'               ; RNA, places the H away from the base
+H3T C3' C4' C2'		               ; Only used in the 3'end
+
+[ trans ]
+C2 N3 C4 N4
+[ out ]
+H5 C5 C6 C4
+N4 C4 N3 C5
+O2 C2 N1 N3
+[ trans ]
+H41 N4 C4 C5
+H42 N4 C4 N3
