@@ -1,0 +1,19 @@
+
+integrator               = steep 
+dt                       = 0.002
+nsteps                   = 1000000
+em_tol                   = 1000.0
+cutoff-scheme            = Verlet
+nstlist                  = 1
+ns_type                  = grid
+pbc                      = xyz
+rlist                    = 1.4
+
+coulombtype              = reaction-field
+rcoulomb_switch          = 0.0
+rcoulomb                 = 1.1
+epsilon_r                = 15
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+constraints              = none
