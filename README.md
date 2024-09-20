@@ -120,20 +120,20 @@ gmx mdrun -v -deffnm md_0_1 <br/>
 
 
 # For ssRNA
-gmx editconf -f file.pdb  -d 1.0 -bt cubic -o box.gro
-gmx solvate -cp box.gro -cs water.gro -o file_solv.gro -p topol.top     
-gmx grompp -f ions.mdp -c file_solv.gro -p topol.top -o ions.tpr -maxwarn 1   
-gmx genion -s ions.tpr -o file_solv_ions.gro -p topol.top -pname NA -nname CL -neutral    
-gmx grompp -p topol.top -f em.mdp -c 3mj0_solv_ions.gro -o em.tpr  -r    3mj0_solv_ions.gro
-gmx mdrun -v -deffnm em 
-gmx make_ndx -f em.tpr -o index.ndx 
-select RNA_P, P, W_ion as its double coupling
-gmx grompp -p topol.top -f equil_wo_spine.mdp -c em.gro -o eq.tpr   -n index.ndx -r em.gro
-gmx mdrun -v -deffnm eq  
-gmx make_ndx -f eq.tpr -o index.ndx 
-select RNA W_ion as its double coupling
-gmx grompp -f mdrun_wo_spine.mdp -c eq.gro -p topol.top -o md_0_1  -n index.ndx 
-gmx mdrun -v -deffnm md_0_1 
+gmx editconf -f file.pdb  -d 1.0 -bt cubic -o box.gro <br/>
+gmx solvate -cp box.gro -cs water.gro -o file_solv.gro -p topol.top <br/>    
+gmx grompp -f ions.mdp -c file_solv.gro -p topol.top -o ions.tpr -maxwarn 1  <br/> 
+gmx genion -s ions.tpr -o file_solv_ions.gro -p topol.top -pname NA -nname CL -neutral <br/>   
+gmx grompp -p topol.top -f em.mdp -c 3mj0_solv_ions.gro -o em.tpr  -r    3mj0_solv_ions.gro <br/>
+gmx mdrun -v -deffnm em <br/>
+gmx make_ndx -f em.tpr -o index.ndx <br/>
+select RNA_P, P, W_ion as its double coupling <br/>
+gmx grompp -p topol.top -f equil_wo_spine.mdp -c em.gro -o eq.tpr   -n index.ndx -r em.gro <br/>
+gmx mdrun -v -deffnm eq  <br/>
+gmx make_ndx -f eq.tpr -o index.ndx <br/>
+select RNA W_ion as its double coupling <br/>
+gmx grompp -f mdrun_wo_spine.mdp -c eq.gro -p topol.top -o md_0_1  -n index.ndx <br/>
+gmx mdrun -v -deffnm md_0_1 <br/>
 
 
 
