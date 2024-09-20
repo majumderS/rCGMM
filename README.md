@@ -56,12 +56,12 @@ Run scripts/spine_finding_algorithm.py to get the spine
 Check in PYMOL for clashes of spine beads with atoms, else energy minimization won't run.
 
 Add the new spine beads to CG.pdb:
-Example:
-  ATOM    338 CENT P   G  53     129.07  130.391 109.589  1.00  0.00
-  ATOM    339 CENT P   G  54     126.395 130.86  110.306  1.00  0.00
-  ATOM    340 CENT P   G  55     131.705 129.376 102.347  1.00  0.00
-  ATOM    341 CENT P   G  56     139.167 127.935  96.843  1.00  0.00
-  ATOM    342 CENT P   G  57     148.218 121.874  82.057  1.00  0.00
+Example:<br/>
+  ATOM    338 CENT P   G  53     129.07  130.391 109.589  1.00  0.00<br/>
+  ATOM    339 CENT P   G  54     126.395 130.86  110.306  1.00  0.00<br/>
+  ATOM    340 CENT P   G  55     131.705 129.376 102.347  1.00  0.00<br/>
+  ATOM    341 CENT P   G  56     139.167 127.935  96.843  1.00  0.00<br/>
+  ATOM    342 CENT P   G  57     148.218 121.874  82.057  1.00  0.00<br/>
 
 Add these new spine beads to molecule_0.itp
 Example:
