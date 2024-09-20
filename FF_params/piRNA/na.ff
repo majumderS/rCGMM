@@ -49,49 +49,49 @@ A                1
  [bonds]
 #meta {"group": "Residue bonds"}
 ;  i     j   funct     length.    force.c.
-   BB1   BB2	1	      0.413	    20283 
-   BB2   BB3	1	      0.238	    55035 
-   BB3   ASC1	1	      0.342	    23168
-   ASC2   ASC4	1	      0.328	    80000;117572;60000;
-   ASC1   ASC3   1      0.341     65000;111098;40000  ;;newly included to maintain the planarity of the molecule.
+   BB1   BB2	1	      0.402	    7971
+   BB2   BB3	1	      0.241	    67552 
+   BB3   ASC1	1	      0.34	    12173
+   ASC2   ASC4	1	      0.33	    46002 ;40000
+   ASC1   ASC3   1      0.341     43808    ;;newly included to maintain the planarity of the molecule.
 #meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
 ;  i     j   funct   length 
-   ASC1   ASC2	1	    0.234   $stiff_fc	
+   ASC1   ASC2	1	    0.233   $stiff_fc	
    ASC2   ASC3	1	    0.269	$stiff_fc
-   ASC3   ASC4	1	    0.295	$stiff_fc
-   ASC4   ASC1	1	    0.164   $stiff_fc
+   ASC3   ASC4	1	    0.294	$stiff_fc
+   ASC4   ASC1	1	    0.163   $stiff_fc
 
 
 [constraints]
 #meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
 ;  i     j   funct   length 
-   ASC1   ASC2	1	    0.234	
+   ASC1   ASC2	1	    0.233	
    ASC2   ASC3	1	    0.269	
-   ASC3   ASC4	1	    0.295	
-   ASC4   ASC1	1	    0.164	
+   ASC3   ASC4	1	    0.294	
+   ASC4   ASC1	1	    0.163	
 
 [angles]
 #meta {"group": "Residue angles"}
 ;  i     j    k     funct   angle  force.c.
-   BB1   BB2   BB3	2	      102	5000 ;175
-   BB2   BB3   ASC1	2	      33	   6000     ;105
+   BB1   BB2   BB3	2	      102	6000 ;175
+   BB2   BB3   ASC1	2	      33   4500     ;105
    ;BB3   BB2   ASC1   2      47.5  1575   ;105   ;;newly included; comma removed 2nd gen
-   BB3   ASC1   ASC2	2	      115	5000   ;90
-   BB3   ASC1   ASC4	2	      124	6000   ;185 ;;not
-   ASC1   ASC2   ASC3	1	      85	 4000   ;200
-   ASC2   ASC1   ASC4	1	      112 4000   ;200
-   ASC2   ASC3   ASC4	1	      71	 4000   ;200
-   ASC3   ASC4   ASC1	1	      91	 4000   ;200
+   BB3   ASC1   ASC2	2	      114	5000   ;90
+   BB3   ASC1   ASC4	2	      124	5000   ;185 ;;not
+   ASC1   ASC2   ASC3	1	      86	 5000   ;200
+   ASC2   ASC1   ASC4	1	      111 6000   ;200
+   ASC2   ASC3   ASC4	1	      71	 5000   ;200
+   ASC3   ASC4   ASC1	1	      75	 2000   ;200
 
 [dihedrals] 
 #meta {"group":"backbone-sidechain dihedrals"}
 ;  i     j    k    l   funct   angle  force.c.  m
-   BB1   BB2  BB3  ASC1	2	      -138	    14         ;1.5   
-   BB2   BB3  ASC1  ASC2	1	     -157	    12    2      ;4
+   BB1   BB2  BB3  ASC1	2	      -140	    10         ;1.5   
+   BB2   BB3  ASC1  ASC2	1	     150	    10    2      ;4
    BB2   BB3  ASC1  ASC2	2	      180	 20         ;2
-   BB2   BB3  ASC1  ASC4	1	      -10	 10      2   ;5
+   BB2   BB3  ASC1  ASC4	1	      -10	 50      2   ;5
    BB2   BB3  ASC1  ASC4	2	       80	 50         ;0.5 
-   ASC1   ASC2  ASC3  ASC4	2	       0    100         ;10
+   ASC1   ASC2  ASC3  ASC4	2	     0    14          ;10
 
 [exclusions]
 ; We do not want non-bounded interactions within the residue.
@@ -124,43 +124,43 @@ U                1
  [bonds]
  #meta {"group": "Residue bonds"}
 ;  i     j   funct   length         force.c.
-   BB1   BB2	1	   0.413	         20283;20000 
-   BB2   BB3	1	   0.24	         55035;40000 
-   BB3   USC1	1	   0.33	         36721;18000
+   BB1   BB2	1	   0.402	         7971;20000 
+   BB2   BB3	1	   0.241	         67552;40000 
+   BB3   USC1	1	   0.334	         12960;18000
 
 #meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
 ;  i     j   funct   length 
    USC1   USC2	1	   0.221	   $stiff_fc
-   USC2   USC3	1	   0.223	   $stiff_fc
-   USC3   USC1	1	   0.3	   $stiff_fc
+   USC2   USC3	1	   0.268	   $stiff_fc
+   USC3   USC1	1	   0.201	   $stiff_fc
 
 
 [constraints]
 #meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
 ;  i     j   funct   length 
     USC1   USC2	1	   0.221	
-    USC2   USC3	1	   0.223	
-    USC3   USC1	1	   0.3	
+    USC2   USC3	1	   0.268	
+    USC3   USC1	1	   0.201	
 
 [angles]
 #meta {"group": "Residue angles"}
 ;  i     j    k     funct   angle  force.c.
-   BB1   BB2   BB3	2	      102	5000    ;175
-   BB2   BB3   USC1	2	      28   2000       ;105
+   BB1   BB2   BB3	2	      102	6000    ;175
+   BB2   BB3   USC1	2	      28	   2000       ;105
    ;BB3   BB2   USC1   2        50    3375 ;;newly included ;comma removed 2nd gen
-   BB3   USC1   USC2	2	      99	   6000     ;200
+   BB3   USC1   USC2	2	      97	   1400     ;200
    ;BB2   USC1   USC3	1	      155	1500 ;;not sure about this ;comma removed 2nd gen
-   USC1   USC2   USC3	1	      50	 3000 ;100
-   USC2   USC1   USC3	1	      77	 3000 ;100
-   BB3   USC1   USC3   1        154  1500 ;100  ;;newly included
-   USC2   USC3   USC1	1	      53	 3000 ; 100
+   USC1   USC2   USC3	1	      49	 6000 ;100
+   USC2   USC1   USC3	1	      77	 6000 ;100
+   BB3   USC1   USC3   1        152  6000 ;100  ;;newly included
+   USC2   USC3   USC1	1	      53	 2000 ; 100
 
 [dihedrals]
 #meta {"group":"backbone-sidechain dihedrals"}
 ;  i     j    k    l   funct   angle  force.c.  m
-   BB1   BB2  BB3  USC1	   1	      -138	 20    2     ;2
-   BB2   BB3  USC1  USC2	2	      -144	 10          ;4
-   BB2   BB3  USC1  USC3	1	     134	 10      6    ;2
+   BB1   BB2  BB3  USC1	   1	      -131  28.4  2;284    2     ;2
+   BB2   BB3  USC1  USC2	2	      -142	 40          ;4
+   BB2   BB3  USC1  USC3	1	      148	 14.3 6 ;143      6    ;2
 
 
 [exclusions]
@@ -190,46 +190,46 @@ G                1
  [bonds]
 #meta {"group": "Residue bonds"}
 ;  i     j   funct   length  force.c.
-   BB1   BB2	1	   0.41	   20283      ;20000
-   BB2   BB3	1	   0.24	   55035      ;40000
-   BB3   GSC1	1	   0.37	   30000;10000      ;20000
-   GSC2   GSC4	1	   0.35	   40000      ;40000  
-   GSC1   GSC3   1     0.31   40000      ;40000  ;;newly included
+   BB1   BB2	1	   0.402	   7971      ;20000
+   BB2   BB3	1	   0.241	   67552      ;40000
+   BB3   GSC1	1	   0.344	   13922      ;20000
+   GSC2   GSC4	1	   0.389	   44144      ;40000  
+   GSC1   GSC3   1   0.34     47525      ;40000  ;;newly included
 #meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
 ;  i     j   funct   length 
-   GSC1   GSC2	1	   0.293	   $stiff_fc
-   GSC2   GSC3	1	   0.291	   $stiff_fc
-   GSC3   GSC4	1	   0.203	   $stiff_fc
-   GSC4   GSC1	1	   0.28	   $stiff_fc
+   GSC1   GSC2	1	   0.296	   $stiff_fc
+   GSC2   GSC3	1	   0.292	   $stiff_fc
+   GSC3   GSC4	1	   0.291	   $stiff_fc
+   GSC4   GSC1	1	   0.163	   $stiff_fc
 
 
 [constraints]
 #meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
 ;  i     j   funct   length 
-   GSC1   GSC2	1	   0.293	
-   GSC2   GSC3	1	   0.291	
-   GSC3   GSC4	1	   0.203	
-   GSC4   GSC1	1	   0.28	
+   GSC1   GSC2	1	   0.296	
+   GSC2   GSC3	1	   0.292	
+   GSC3   GSC4	1	   0.291	
+   GSC4   GSC1	1	   0.163	
 
 [angles]
 #meta {"group": "Residue angles"}
 ;  i     j    k     funct   angle  force.c.
-   BB1   BB2   BB3	2	      102	5000     ;175
-   BB2   BB3   GSC1	2	      33	   4000     ;260
-   BB3   GSC1   GSC2	2	      111	5000     ;80
-   BB3   GSC1   GSC4	2	      124	6000     ;120
-   GSC1   GSC2   GSC3	1	      71	4000    ;  200
-   GSC2   GSC1   GSC4	1	      113 4000   ;	200
-   ****GSC2   GSC3   GSC4	1	      113 4000    ; 200
-   GSC3   GSC4   GSC1	1	      91  4000  ;	200
+   BB1   BB2   BB3	2	      102	6000     ;175
+   BB2   BB3   GSC1	2	      34	1000     ;260
+   BB3   GSC1   GSC2	2	      121	5000     ;80
+   BB3   GSC1   GSC4	2	      121	5000     ;120
+   GSC1   GSC2   GSC3	1	      71	6000    ;  200
+   GSC2   GSC1   GSC4	1	      111 6000   ;	200
+   GSC2   GSC3   GSC4	1	      86	5000    ; 200
+   GSC3   GSC4   GSC1	1	      93    6000   ;	200
 
 [dihedrals]
 #meta {"group":"backbone-sidechain dihedrals"}
 ;  i     j    k    l   funct   angle  force.c.  m 
-   BB1   BB2  BB3  GSC1	1	      -140.0 	12  2     ;1      comma removed 2nd gen
-   BB2   BB3  GSC1  GSC2	2	    -160	 10        ;3.5
-   BB2   BB3  GSC1  GSC4	1	       0	  14     2   ;5
-   GSC1   GSC2  GSC3  GSC4	2	       0	     100        ;10
+   BB1   BB2  BB3  GSC1	1	      -142	20  2     ;1      comma removed 2nd gen
+   BB2   BB3  GSC1  GSC2	2	       -138	 10        ;3.5
+   BB2   BB3  GSC1  GSC4	1	       0.0	  50     2   ;5
+   GSC1   GSC2  GSC3  GSC4	2	       0	     20        ;10
 
 
 [exclusions]
@@ -261,44 +261,44 @@ C                1
  [bonds]
  #meta {"group": "Residue bonds"}
 ;  i     j   funct   length         force.c.
-   BB1   BB2	1	   0.413	        20283 ;20000 
-   BB2   BB3	1	   0.24	        55035 ; 40000 
-   BB3   CSC1	1	   0.26	        11000 ; 11000
+   BB1   BB2	1	   0.402    7971 ;20000 
+   BB2   BB3	1	   0.241	        67552 ; 40000 
+   BB3   CSC1	1	   0.33	        20685 ; 11000
 
 ;#meta {"group": "Residue bonds", "ifdef": "FLEXIBLE"}
 ;  i     j   funct   length  
-   CSC1   CSC2	1	   0.27   $stiff_fc
-   CSC2   CSC3	1	   0.273	   $stiff_fc
-   CSC3   CSC1	1	   0.314    $stiff_fc
+   CSC1   CSC2	1	   0.224	   $stiff_fc
+   CSC2   CSC3	1	   0.281	   $stiff_fc
+   CSC3   CSC1	1	   0.267    $stiff_fc
 
 
 [constraints]
 #meta {"group": "Residue bonds", "ifndef": "FLEXIBLE"}
 ;  i     j   funct   length 
-   CSC1   CSC2	1	   0.27	
-   CSC2   CSC3	1	   0.273	
-   CSC3   CSC1	1	   0.314	
+   CSC1   CSC2	1	   0.224	
+   CSC2   CSC3	1	   0.281	
+   CSC3   CSC1	1	   0.267	
 [angles]
 #meta {"group": "Residue angles"}
 ;  i     j    k     funct   angle  force.c.
 
-   BB1   BB2  BB3	   2	      102	  5000 ;175
-   BB2   BB3  CSC1	   2	      28  2300  ;230
-   BB3   CSC1  CSC2	   2	      99  3000  ;170
-   BB3   CSC1  CSC3    2        149   3000 ;100   ;;newly included
+   BB1   BB2  BB3	   2	      102	  6000 ;175
+   BB2   BB3  CSC1	   2	      34	  2000  ;230
+   BB3   CSC1  CSC2	   2	      99  6000  ;170
+   BB3   CSC1  CSC3    2        151   2000 ;100   ;;newly included
   ; BB2   CSC1  CSC3	   1	      155	1500  ;;not sure ;comma removed 2nd gen
-   CSC1   CSC2  CSC3	   1	      63	   3000 ;200
-   CSC2   CSC1  CSC3	   1	      71	   3000 ;200
-   CSC2   CSC3  CSC1	   1	      49	   3000 ;200
+   CSC1   CSC2  CSC3	   1	      61	   5000 ;200
+   CSC2   CSC1  CSC3	   1	      71	   6000 ;200
+   CSC2   CSC3  CSC1	   1	      47	   2000 ;200
 
 [dihedrals]
 #meta {"group":"backbone-sidechain dihedrals"}
 ;  i     j    k    l   funct   angle  force.c.  m
-   BB1   BB2  BB3  CSC1	1	      55.0	30     2
-   BB1   BB2  BB3  CSC1	2	      -136	13      
-   BB2   BB3  CSC1  CSC2	1	      0 	10   6   
-   BB2   BB3  CSC1  CSC2	2	      180.0	30        
-   BB2   BB3  CSC1  CSC3  2        144  10  ;;newly included
+BB1   BB2  BB3  CSC1	1	      55	20     2
+BB1   BB2  BB3  CSC1	2	      -137	20      
+BB2   BB3  CSC1  CSC2	2	       180	30      
+BB2   BB3  CSC1  CSC2	1	       -150.0	20        6
+BB2   BB3  CSC1  CSC3  2         150.0  24 ;241  ;;newly included
 
 [exclusions]
 ; We do not want non-bounded interactions within the residue.
@@ -318,7 +318,7 @@ CSC2 CSC3
 resname $na_resnames
 [ bonds ]
 #meta {"group": "Backbone bonds"}
-BB3  +BB1 1 0.33 91726;15000;;10000    ;increased by 1.5 times
+BB3  +BB1 1 0.354 22500 ;10000    ;increased by 1.5 times
 
 
 
@@ -326,14 +326,14 @@ BB3  +BB1 1 0.33 91726;15000;;10000    ;increased by 1.5 times
 resname $na_resnames
 [ angles ]
 #meta {"group": "BBB angles"}
-BB2   BB3   +BB1	2 126 1000 ;105        ;increased by 10 and 1.5 times.
+BB2   BB3   +BB1	2 124 6000 ;105        ;increased by 10 and 1.5 times.
 
 
 [ link ]
 resname $na_resnames
 [ angles ]
 #meta {"group": "BBB angles"}
-BB3   +BB1   +BB2	2 69 1000  ;75        ;increased by 10 and 1.5 times
+BB3   +BB1   +BB2	2 75 1400  ;75        ;increased by 10 and 1.5 times
 
 
 
@@ -341,7 +341,7 @@ BB3   +BB1   +BB2	2 69 1000  ;75        ;increased by 10 and 1.5 times
 resname "A"
 [ angles ]
 #meta {"group": "BB-SC1 angles"}
-ASC1   BB3   +BB1	2 119 140;  1400 15               ; incresed by 10 and 1.5 times
+ASC1   BB3   +BB1	2 124 5000; 15               ; incresed by 10 and 1.5 times
                                            ; additional increase by 10 times (as very small w.r.t others)
 
 
@@ -349,7 +349,7 @@ ASC1   BB3   +BB1	2 119 140;  1400 15               ; incresed by 10 and 1.5 tim
 resname "U"
 [ angles ]
 #meta {"group": "BB-SC1 angles"}
-USC1   BB3   +BB1	1 115 510;  5100  ;5                ; incresed by 10 and 1.5 times
+USC1   BB3   +BB1	1 124 6000  ;5                ; incresed by 10 and 1.5 times
                                            ; additional increase by 10 times (as very small w.r.t others)
 
 
@@ -357,14 +357,14 @@ USC1   BB3   +BB1	1 115 510;  5100  ;5                ; incresed by 10 and 1.5 t
 resname "G"
 [ angles ]
 #meta {"group": "BB-SC1 angles"} 
-GSC1   BB3   +BB1	2 124 630;  6300; 20             ; incresed by 10 and 1.5 times
+GSC1   BB3   +BB1	2 124 7000 ;20             ; incresed by 10 and 1.5 times
                                           ; additional increase by 10 times (as very small w.r.t others)
 
 [ link ]
 resname "C"
 [ angles ]
 #meta {"group": "BB-SC1 angles"} 
-CSC1   BB3   +BB1	2 119 170;  1700 ;0.5             ; incresed by 10 and 1.5 times
+CSC1   BB3   +BB1	2 118.0 7000 ;0.5             ; incresed by 10 and 1.5 times
                                           ; additional increase by 100 times (as very small w.r.t others)
 
 
@@ -372,23 +372,23 @@ CSC1   BB3   +BB1	2 119 170;  1700 ;0.5             ; incresed by 10 and 1.5 tim
 resname $na_resnames
 [ dihedrals ]
 #meta  {"group": "BB-BB-BB-BB"}
- BB1   BB2  BB3  +BB1	2 0 20  ;3.5
+ BB1   BB2  BB3  +BB1	2 0 52   ;3.5
  
 [ link ]
 resname $na_resnames
 [ dihedrals ]
 #meta  {"group": "BB-BB-BB-BB"}
- BB2   BB3  +BB1  +BB2	1 0 10 4   ;4
+BB2   BB3  +BB1  +BB2	1 0.0 10 4   
  
 [ link ]
 resname $na_resnames
 [ dihedrals ]
 #meta  {"group": "BB-BB-BB-BB"}
- BB3   +BB1  +BB2  +BB3	9 99.0  200  2   ;1.5
+BB3   +BB1  +BB2  +BB3	9 -47.0  10  1   ;1.5
  
-commenting as data didnt show any such trend 
 [ link ]
 resname $na_resnames
 [ dihedrals ]
 #meta  {"group": "BB-BB-BB-BB"}
-BB3   +BB1  +BB2  +BB3	9 -10.0 200  2   ;1.5  
+BB3   +BB1  +BB2  +BB3	9 10.0 22 2 ;225  2   ;1.5  
+
