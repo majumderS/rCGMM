@@ -41,9 +41,9 @@ Molecule Preparation
 --------------------------
 martinize2 -v -f file.pdb -ff martini3001 -from charmm -x 3mj0_CG.pdb -o topol.top <br/>
 
-Run process_CG_file.py to clean the CG file and add additional information.
+Run Scripts/process_CG_file.py to clean the CG file and add additional information.
 
-Run scripts/spine_finding_algorithm.py to get the spine <br/>
+Run Scripts/spine_finding_algorithm.py to get the spine <br/>
 Check in PYMOL for clashes of spine beads with atoms, else energy minimization won't run. <br/>
 
 Add the new spine beads to CG.pdb: <br/>
