@@ -41,16 +41,7 @@ Molecule Preparation
 --------------------------
 martinize2 -v -f file.pdb -ff martini3001 -from charmm -x 3mj0_CG.pdb -o topol.top <br/>
 
-edit and add the reference of itp files to  the topol.top file:<br/>
-  #include "martini_v3.0.0_solvents_v1.itp"  <br/>
-  #include "martini_v3.0.0_ions_v1.itp"<br/>
-
-edit and add the position restraint information to the molecule_0.itp files generated.<br/>
-  ;POSITION RESTRAINT INFORMATION <br/>
-  ;Include Position restraint file <br/>
-  #ifdef POSRES <br/>
-  #include "molecule0_posre_equil.itp"<br/> 
-  #endif <br/>
+Run process_CG_file.py to clean the CG file and add additional information.
 
 Run scripts/spine_finding_algorithm.py to get the spine <br/>
 Check in PYMOL for clashes of spine beads with atoms, else energy minimization won't run. <br/>
